@@ -1,43 +1,18 @@
 # ==============================================================
 # netlify.toml — Ite Nnem Native Kitchen
-# Netlify proxy: /api/* → https://itennem.gt.tc/api/*
-# The browser sees same-origin requests (no CORS needed).
-# Netlify fetches from InfinityFree server-side (bypasses their bot check).
+# Using Edge Functions to bypass InfinityFree Bot Protection
 # ==============================================================
 
 [build]
   publish = "."
 
-# ── API Proxy Rules ────────────────────────────────────────────
-# These MUST come before any catch-all redirect.
+# ── Edge Function Routing ─────────────────────────────────────
+# This runs our proxy.js logic for every /api/ request
+[[edge_functions]]
+  path = "/api/*"
+  function = "proxy"
 
-[[redirects]]
-  from   = "/api/menu.php"
-  to     = "https://itennem.gt.tc/api/menu.php"
-  status = 200
-  force  = true
-
-[[redirects]]
-  from   = "/api/gallery.php"
-  to     = "https://itennem.gt.tc/api/gallery.php"
-  status = 200
-  force  = true
-
-[[redirects]]
-  from   = "/api/settings.php"
-  to     = "https://itennem.gt.tc/api/settings.php"
-  status = 200
-  force  = true
-
-# ── Optional: proxy admin panel via Netlify too ────────────────
-# (Uncomment if you want https://itennem.ng/admin/* to reach InfinityFree)
-# [[redirects]]
-#   from   = "/admin/*"
-#   to     = "https://itennem.gt.tc/admin/:splat"
-#   status = 200
-#   force  = true
-
-# ── SPA fallback (keep this last) ─────────────────────────────
+# ── SPA fallback ──────────────────────────────────────────────
 [[redirects]]
   from   = "/*"
   to     = "/index.html"
