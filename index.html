@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>Ite Nnem Native Kitchen · Authentic Nigerian Flavours</title>
+  <meta name="description"
+    content="Ite Nnem Native Kitchen — Authentic Nigerian soups, swallow, rice, seafood, and native platters freshly made in Ikeja, Lagos. Order via WhatsApp." />
+
+  <!-- Font Awesome 6 (free) + Google Font -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --cream: #fefae0;
+      --cream-dark: #f5e9c4;
+      --orange: #f39c12;
+      --orange-deep: #e67e22;
+      --brown: #7b3f00;
+      --brown-soft: #9b5e2e;
+      --text: #3e2c1b;
+      --shadow: 0 20px 30px -10px rgba(123, 63, 0, 0.15);
+      --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(123, 63, 0, 0.10);
+      --radius-lg: 40px;
+      --radius-md: 28px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.5;
+      opacity: 0;
+      animation: bodyFadeIn 1.1s ease forwards;
+    }
+
+    @keyframes bodyFadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* section spacing + fade-in */
+    section {
+      padding: 4rem 0;
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--brown);
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+      letter-spacing: -0.02em;
+    }
+
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: var(--orange);
+      border-radius: 4px;
+    }
+
+    /* top nav */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(254, 250, 224, 0.75);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(123, 63, 0, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+      color: var(--brown);
+      font-weight: 800;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      object-fit: contain;
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      padding: 6px;
+    }
+
+    .brand span {
+      font-size: 1rem;
+      line-height: 1.1;
+    }
+
+    .brand small {
+      display: block;
+      font-weight: 600;
+      opacity: 0.75;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      margin-top: 2px;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .navlinks a {
+      text-decoration: none;
+      color: var(--brown);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      transition: 0.2s;
+    }
+
+    .navlinks a:hover {
+      background: rgba(243, 156, 18, 0.16);
+      transform: translateY(-1px);
+    }
+
+    /* buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 800;
+      padding: 0.95rem 1.25rem;
+      border-radius: 999px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(243, 156, 18, 0.25);
+      transition: 0.25s;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: var(--orange-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 26px rgba(230, 126, 34, 0.28);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      box-shadow: none;
+    }
+
+    .btn-outline:hover {
+      border-color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .btn-dark-outline {
+      background: transparent;
+      border: 2px solid var(--orange);
+      color: var(--brown);
+      box-shadow: none;
+    }
+
+    .btn-dark-outline:hover {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    /* floating whatsapp */
+    .floating-wa {
+      position: fixed;
+      bottom: 26px;
+      right: 18px;
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      text-decoration: none;
+      z-index: 999;
+      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.40);
+      transition: 0.2s;
+      animation: waFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes waFloat {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .floating-wa:hover {
+      background: #20b859;
+      transform: scale(1.07);
+      animation: none;
+    }
+
+    /* hero */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      color: #fff;
+      padding: 0;
+      margin-top: 0;
+      border-bottom-left-radius: var(--radius-lg);
+      border-bottom-right-radius: var(--radius-lg);
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(123, 63, 0, 0.80), rgba(243, 156, 18, 0.55)),
+        url('assets/food-ofada-rice.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero:before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.12), transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 820px;
+      padding: 2rem 0;
+      position: relative;
+      animation: heroFloating 4s infinite alternate ease-in-out;
+    }
+
+    @keyframes heroFloating {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .hero h1 {
+      font-size: 3.1rem;
+      font-weight: 900;
+      line-height: 1.12;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.32);
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.96;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.28);
+      margin-bottom: 2rem;
+      max-width: 64ch;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .hero-meta {
+      margin-top: 1.6rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0.95;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.6rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    /* grids */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.6rem;
+    }
+
+    @media(min-width: 650px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(min-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* cards */
+    .card {
+      background: #fff;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: 0.28s;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .card-head {
+      padding: 1.35rem 1.35rem 0.9rem;
+    }
+
+    .card h3 {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--brown);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+
+    .card p {
+      color: #5f4d33;
+      font-size: 0.98rem;
+    }
+
+    .card img.flyer {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+      transition: transform 0.55s;
+    }
+
+    .card:hover img.flyer {
+      transform: scale(1.04);
+    }
+
+    .card-actions {
+      padding: 1.1rem 1.35rem 1.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.9rem;
+      margin-top: auto;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(243, 156, 18, 0.14);
+      color: var(--brown);
+      font-weight: 800;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .pill i {
+      color: var(--orange-deep);
+    }
+
+    /* menu flyers grid */
+    .flyer-img {
+      height: 320px !important;
+      object-fit: cover;
+    }
+
+    .smallnote {
+      margin-top: 0.65rem;
+      color: rgba(62, 44, 27, 0.75);
+      font-weight: 600;
+      font-size: 0.95rem;
+      max-width: 80ch;
+    }
+
+    /* Loading state */
+    .loading-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .skeleton-card {
+      background: #fff;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, #f0ebe0 25%, #fffaf3 50%, #f0ebe0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 8px;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+
+      100% {
+        background-position: 200% 0;
+      }
+    }
+
+    .skeleton-img {
+      width: 100%;
+      height: 300px;
+      border-radius: 0;
+    }
+
+    .skeleton-text {
+      height: 20px;
+      margin: 12px 16px 6px;
+    }
+
+    .skeleton-sm {
+      height: 14px;
+      width: 60%;
+      margin: 0 16px 20px;
+    }
+
+    .api-error {
+      background: #fff5f5;
+      border: 2px solid #fca5a5;
+      border-radius: 18px;
+      padding: 1.5rem;
+      text-align: center;
+      color: #b91c1c;
+      font-weight: 700;
+      margin-top: 1.5rem;
+    }
+
+    /* About */
+    .about-wrap {
+      display: flex;
+      gap: 2.2rem;
+      flex-wrap: wrap;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--card-shadow);
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 2 1 320px;
+      font-size: 1.12rem;
+      color: var(--text);
+    }
+
+    .about-text strong {
+      color: var(--brown);
+    }
+
+    .about-img {
+      flex: 1 1 260px;
+      min-width: 240px;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 18px 28px rgba(123, 63, 0, 0.18);
+      background: rgba(254, 250, 224, 0.35);
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      padding: 1.2rem;
+    }
+
+    /* why */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    @media(min-width: 780px) {
+      .why-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .why-item {
+      background: #fff;
+      padding: 1.7rem 1rem;
+      text-align: center;
+      border-radius: 30px;
+      box-shadow: var(--card-shadow);
+      transition: 0.25s;
+    }
+
+    .why-item:hover {
+      transform: translateY(-5px);
+      background: #fffaf0;
+    }
+
+    .why-item i {
+      font-size: 2.7rem;
+      color: var(--orange);
+      margin-bottom: 0.7rem;
+      display: inline-block;
+      animation: iconWiggle 5s infinite;
+    }
+
+    @keyframes iconWiggle {
+
+      0%,
+      80% {
+        transform: rotate(0deg);
+      }
+
+      85% {
+        transform: rotate(5deg);
+      }
+
+      95% {
+        transform: rotate(-3deg);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    .why-item h4 {
+      font-size: 1.12rem;
+      font-weight: 900;
+      color: var(--brown);
+    }
+
+    /* contact */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 2.2rem;
+      box-shadow: var(--card-shadow);
+    }
+
+    .contact-info {
+      flex: 1 1 280px;
+    }
+
+    .contact-info p {
+      margin: 0.9rem 0;
+      font-size: 1.1rem;
+    }
+
+    .contact-info a.link {
+      color: var(--brown);
+      font-weight: 900;
+      text-decoration: none;
+      border-bottom: 2px solid rgba(243, 156, 18, 0.35);
+    }
+
+    .contact-info a.link:hover {
+      border-bottom-color: var(--orange);
+    }
+
+    .cta-stack {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .wa-large {
+      background: #25D366;
+      box-shadow: 0 12px 26px rgba(37, 211, 102, 0.22);
+    }
+
+    .wa-large:hover {
+      background: #20b859;
+    }
+
+    .call-large {
+      background: #111;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16);
+    }
+
+    .call-large:hover {
+      background: #000;
+    }
+
+    .hours {
+      margin-top: 1.3rem;
+      padding: 1rem 1.1rem;
+      border-radius: 22px;
+      background: rgba(245, 233, 196, 0.65);
+      border: 1px solid rgba(123, 63, 0, 0.08);
+    }
+
+    .hours h4 {
+      font-size: 1.05rem;
+      color: var(--brown);
+      margin-bottom: 0.35rem;
+      font-weight: 900;
+    }
+
+    .hours p {
+      margin: 0.2rem 0 0;
+      font-weight: 700;
+    }
+
+    .map-box {
+      flex: 2 1 360px;
+      border-radius: 35px;
+      overflow: hidden;
+      min-height: 280px;
+      background: #ddd5c5;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* footer */
+    footer {
+      background: var(--brown);
+      color: var(--cream);
+      padding: 2.5rem 0;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+      margin-top: 2rem;
+    }
+
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .socials a {
+      color: var(--cream);
+      font-size: 1.7rem;
+      margin-left: 1rem;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+
+    .socials a:hover {
+      color: var(--orange);
+    }
+
+    /* lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 9999;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      width: min(980px, 100%);
+      background: #111;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+      position: relative;
+    }
+
+    .lightbox-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      background: rgba(0, 0, 0, 0.60);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .lightbox-top span {
+      opacity: 0.95;
+    }
+
+    .lightbox-top button {
+      background: transparent;
+      color: #fff;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+
+    .lightbox-top button:hover {
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    .lightbox img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #000;
+    }
+
+    /* small helpers */
+    .text-center {
+      text-align: center;
+    }
+
+    /* Mobile fixes */
+    @media (max-width: 768px) {
+      body {
+        animation: none !important;
+        opacity: 1 !important;
+      }
+
+      section {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      section.visible {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .hero-content {
+        animation: none !important;
+        transform: none !important;
+      }
+
+      .floating-wa {
+        animation: none !important;
+        transform: none !important;
+      }
+
+      .card,
+      .card:hover {
+        transform: none !important;
+        box-shadow: var(--card-shadow) !important;
+      }
+
+      .card img.flyer,
+      .card:hover img.flyer {
+        transform: none !important;
+        transition: none !important;
+      }
+
+      .navlinks a:hover {
+        transform: none !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .flyer-img {
+        height: auto !important;
+        object-fit: contain !important;
+        background: #fff;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- WhatsApp Floating Button (populated by JS after settings load) -->
+  <a class="floating-wa" id="floatingWa"
+    href="https://wa.me/2349055426488?text=Hello%20Ite%20Nnem!%20I'd%20like%20to%20place%20an%20order." target="_blank"
+    rel="noopener" aria-label="Order on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- TOP NAV -->
+  <div class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Ite Nnem Native Kitchen home">
+        <img src="assets/logo.png" alt="Ite Nnem Native Kitchen logo" />
+        <span>
+          Ite Nnem Native Kitchen
+          <small>Ikeja · Lagos</small>
+        </span>
+      </a>
+
+      <div class="navlinks">
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#story">Our story</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero visible" id="top" style="padding:0;">
+    <div class="container hero-content">
+      <div class="hero-kicker">
+        <i class="fas fa-bowl-food"></i>
+        <span>Authentic Nigerian meals · Freshly made soups</span>
+      </div>
+
+      <h1>Authentic Nigerian flavours,<br />served fresh in Ikeja.</h1>
+
+      <p>
+        Order via WhatsApp and enjoy traditional healthy recipes/spices straight to your table.
+        We use natural seasonings — health, freshness, and taste in every pot.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#menu" class="btn"><i class="fas fa-utensils"></i> View Menu</a>
+        <a id="heroWaBtn"
+          href="https://wa.me/2349055426488?text=Hello%20Ite%20Nnem!%20I'd%20like%20to%20order%20from%20your%20menu."
+          class="btn btn-outline" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Order on WhatsApp
+        </a>
+      </div>
+
+      <div class="hero-meta">
+        <span class="meta-pill" id="heroAddress"><i class="fas fa-location-dot"></i> Ikeja</span>
+        <span class="meta-pill" id="heroHours"><i class="fas fa-clock"></i> Mon–Sat: 10am–8pm</span>
+        <span class="meta-pill"><i class="fas fa-ban"></i> Closed Sundays</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU (dynamic) -->
+  <section id="menu" class="container">
+    <h2>Menu &amp; prices</h2>
+    <p class="smallnote">
+      Tap any menu card to zoom. Our full menu is managed live from the admin panel.
+    </p>
+    <div id="menuGrid" class="grid" style="margin-top: 1.5rem;" aria-live="polite" aria-label="Menu items">
+      <!-- Skeleton loaders -->
+      <div class="skeleton-card">
+        <div class="skeleton skeleton-img"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-sm"></div>
+      </div>
+      <div class="skeleton-card">
+        <div class="skeleton skeleton-img"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-sm"></div>
+      </div>
+      <div class="skeleton-card">
+        <div class="skeleton skeleton-img"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-sm"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOD GALLERY (dynamic) -->
+  <section id="gallery" class="container">
+    <h2>Food gallery</h2>
+    <p class="smallnote">
+      Real food photos provided by Ite Nnem. Tap to zoom. Use WhatsApp to order.
+    </p>
+    <div id="galleryGrid" class="grid" style="margin-top: 1.5rem;" aria-live="polite" aria-label="Food gallery">
+      <div class="skeleton-card">
+        <div class="skeleton skeleton-img"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-sm"></div>
+      </div>
+      <div class="skeleton-card">
+        <div class="skeleton skeleton-img"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-sm"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section id="story" class="container">
+    <h2>Our story</h2>
+    <div class="about-wrap">
+      <div class="about-text">
+        <p>
+          <strong>Ite Nnem</strong> means <strong>"my mother's pot"</strong>. It's a gift, a passion, an inspiration and
+          love for service to humanity.
+          Every meal cooked is life in a plate — health and freshness.
+          We bring traditional healthy recipes/spices straight to your table.
+          Freshly made soups with natural seasonings are our goal for a healthy living.
+        </p>
+
+        <div class="cta-stack" style="margin-top: 1.2rem;">
+          <a class="btn wa-large" id="storyWaBtn"
+            href="https://wa.me/2349055426488?text=Hello%20Ite%20Nnem!%20I%20want%20to%20place%20an%20order."
+            target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Order on WhatsApp
+          </a>
+          <a class="btn btn-dark-outline" href="#contact">
+            <i class="fas fa-location-dot"></i> See location
+          </a>
+        </div>
+      </div>
+
+      <div class="about-img" aria-label="Brand logo">
+        <img src="assets/logo.png" alt="Ite Nnem Native Kitchen logo" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="container">
+    <h2>Why people love Ite Nnem</h2>
+    <div class="why-grid">
+      <div class="why-item"><i class="fas fa-leaf"></i>
+        <h4>Natural seasonings</h4>
+      </div>
+      <div class="why-item"><i class="fas fa-bowl-rice"></i>
+        <h4>Traditional flavours</h4>
+      </div>
+      <div class="why-item"><i class="fas fa-fire"></i>
+        <h4>Freshly made soups</h4>
+      </div>
+      <div class="why-item"><i class="fas fa-location-dot"></i>
+        <h4>Ikeja pickup</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (dynamic) -->
+  <section id="contact" class="container">
+    <h2>Contact &amp; location</h2>
+
+    <div class="contact-row">
+      <div class="contact-info">
+        <p>
+          <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+          WhatsApp:
+          <a class="link" id="contactPhone" href="https://wa.me/2349055426488" target="_blank"
+            rel="noopener">09055426488</a>
+        </p>
+
+        <p>
+          <i class="fas fa-location-dot" style="color:var(--orange);"></i>
+          Location: <strong>Ikeja</strong><br />
+          Address: <strong id="contactAddress">7A Olororunimbe Street, Wema Bod Estate, Ikeja (off Adeniyi
+            Jones)</strong>
+        </p>
+
+        <p>
+          <i class="fab fa-instagram" style="color:#E1306C;"></i>
+          Instagram:
+          <a class="link" id="contactInstagram" href="https://instagram.com/itennemnaitvekitchen" target="_blank"
+            rel="noopener">@itennemnaitvekitchen</a>
+        </p>
+
+        <p>
+          <i class="fab fa-tiktok" style="color:#E1306C;"></i>
+          Tiktok:
+          <a class="link" id="contactTiktok" href="https://www.tiktok.com/@lovethe838?_r=1&_t=ZS-948lLv9gBSj"
+            target="_blank" rel="noopener">@itennemnaitvekitchen</a>
+        </p>
+
+        <div class="hours">
+          <h4>🕒 Opening hours</h4>
+          <p id="contactHours">Mon–Sat: 10am – 8pm<br />Sunday: Closed</p>
+        </div>
+
+        <div class="cta-stack">
+          <a class="btn wa-large" id="contactWaBtn"
+            href="https://wa.me/2349055426488?text=Hello%20Ite%20Nnem!%20I%20want%20to%20order%20from%20your%20menu."
+            target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> Order now
+          </a>
+
+          <a class="btn call-large" id="contactCallBtn" href="tel:+2349055426488">
+            <i class="fas fa-phone"></i> Call
+          </a>
+        </div>
+      </div>
+
+      <div class="map-box" aria-label="Google Map">
+        <iframe
+          src="https://www.google.com/maps?q=7A%20Olororunimbe%20Street%2C%20Wema%20Bod%20Estate%2C%20Ikeja%20(off%20Adeniyi%20Jones)&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen="">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-flex">
+      <p>© 2026 Ite Nnem Native Kitchen · Ikeja, Lagos</p>
+      <div class="socials">
+        <a id="footerInstagram" href="https://instagram.com/itennemnaitvekitchen" target="_blank" rel="noopener"
+          aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a id="footerTiktok" href="https://www.tiktok.com/@lovethe838?_r=1&_t=ZS-948lLv9gBSj" target="_blank"
+          rel="noopener" aria-label="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a id="footerWa" href="https://wa.me/2349055426488" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Image preview">
+      <div class="lightbox-top">
+        <span id="lightboxTitle">Preview</span>
+        <button id="lightboxClose" aria-label="Close preview"><i class="fas fa-times"></i></button>
+      </div>
+      <img id="lightboxImg" alt="Preview image" />
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SCRIPTS: Fetch API + lightbox + scroll observer
+  ============================================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      // ── CONFIG ────────────────────────────────────────────────
+      const API_BASE = 'https://itennem.gt.tc';
+      const WA_DEFAULT = '2349055426488';
+
+      // ── LIGHTBOX ──────────────────────────────────────────────
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      const lbTtl = document.getElementById('lightboxTitle');
+      const lbClose = document.getElementById('lightboxClose');
+
+      function openLightbox(src, title) {
+        lbImg.src = src;
+        lbTtl.textContent = title || 'Preview';
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      // Attach lightbox to an img element (called after dynamic insert)
+      function attachLightbox(img) {
+        img.addEventListener('click', function () {
+          openLightbox(img.getAttribute('src'), img.dataset.title || img.alt || 'Preview');
+        });
+      }
+
+      lbClose.addEventListener('click', closeLightbox);
+      lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
+      });
+
+      // ── SCROLL OBSERVER ────────────────────────────────────────
+      const sections = document.querySelectorAll('section');
+      const sObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.15, rootMargin: '20px' });
+      sections.forEach(function (s) { sObserver.observe(s); });
+
+      // ── HELPERS ────────────────────────────────────────────────
+      function waLink(number, text) {
+        const n = number || WA_DEFAULT;
+        const t = encodeURIComponent(text || "Hello Ite Nnem! I'd like to place an order.");
+        return 'https://wa.me/' + n + '?text=' + t;
+      }
+
+      function showError(containerId, message) {
+        const el = document.getElementById(containerId);
+        if (el) {
+          el.innerHTML = '<div class="api-error"><i class="fas fa-exclamation-triangle"></i> ' +
+            'Could not load content. ' + (message || '') + '</div>';
+        }
+      }
+
+      // ── FETCH SETTINGS ─────────────────────────────────────────
+      function loadSettings() {
+        fetch(API_BASE + '/api/settings.php', { method: 'GET', mode: 'cors' })
+          .then(function (r) { return r.json(); })
+          .then(function (s) {
+            if (!s || !s.whatsapp_number) return;
+
+            const num = s.whatsapp_number;
+            const genericLink = waLink(num, "Hello Ite Nnem! I'd like to place an order.");
+
+            // Floating WA button
+            document.getElementById('floatingWa').href = genericLink;
+
+            // Hero
+            document.getElementById('heroWaBtn').href = waLink(num, "Hello Ite Nnem! I'd like to order from your menu.");
+
+            // Story section
+            document.getElementById('storyWaBtn').href = waLink(num, "Hello Ite Nnem! I want to place an order.");
+
+            // Contact section
+            document.getElementById('contactPhone').href = 'https://wa.me/' + num;
+            document.getElementById('contactPhone').textContent = '0' + num.slice(3); // remove country code prefix
+            document.getElementById('contactWaBtn').href = waLink(num, "Hello Ite Nnem! I want to order from your menu.");
+            document.getElementById('contactCallBtn').href = 'tel:+' + num;
+
+            if (s.address) {
+              document.getElementById('contactAddress').textContent = s.address;
+              document.getElementById('heroAddress').innerHTML =
+                '<i class="fas fa-location-dot"></i> Ikeja';
+            }
+
+            if (s.hours) {
+              // Replace pipe delimiter with line break for display
+              const hoursFormatted = s.hours.replace(/\s*\|\s*/g, '<br/>');
+              document.getElementById('contactHours').innerHTML = hoursFormatted;
+              // Hero pill — show first part
+              const hoursPill = s.hours.split('|')[0].trim();
+              document.getElementById('heroHours').innerHTML =
+                '<i class="fas fa-clock"></i> ' + hoursPill;
+            }
+
+            if (s.instagram_url) {
+              document.getElementById('contactInstagram').href = s.instagram_url;
+              document.getElementById('footerInstagram').href = s.instagram_url;
+            }
+
+            if (s.tiktok_url) {
+              document.getElementById('contactTiktok').href = s.tiktok_url;
+              document.getElementById('footerTiktok').href = s.tiktok_url;
+            }
+
+            if (num) {
+              document.getElementById('footerWa').href = 'https://wa.me/' + num;
+            }
+
+          })
+          .catch(function () {
+            // Settings load failure is non-fatal — fallback defaults remain
+            console.warn('[Ite Nnem] Settings fetch failed — using defaults.');
+          });
+      }
+
+      // ── FETCH MENU ─────────────────────────────────────────────
+      function loadMenu() {
+        fetch(API_BASE + '/api/menu.php', { method: 'GET', mode: 'cors' })
+          .then(function (r) {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.json();
+          })
+          .then(function (json) {
+            var items = json.data || [];
+            var grid = document.getElementById('menuGrid');
+            if (!items.length) {
+              grid.innerHTML = '<p class="smallnote" style="margin-top:1rem">No menu items available yet.</p>';
+              return;
+            }
+            grid.innerHTML = '';
+            items.forEach(function (item) {
+              var waText = item.whatsapp_text || "Hello Ite Nnem! Please tell me more about " + item.title + ".";
+              var imgHtml = item.image_url
+                ? '<img class="flyer flyer-img" src="' + escHtml(item.image_url) + '" alt="' +
+                escHtml(item.title) + '" loading="lazy" data-title="' + escHtml(item.title) + '"/>'
+                : '<div style="height:200px;background:#f5f0e8;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:2.5rem"><i class="fas fa-image"></i></div>';
+
+              var card = document.createElement('article');
+              card.className = 'card';
+              card.innerHTML =
+                '<div class="card-head">' +
+                '<h3>' + escHtml(item.title) + '</h3>' +
+                (item.subtitle ? '<p>' + escHtml(item.subtitle) + '</p>' : '') +
+                '</div>' +
+                imgHtml +
+                '<div class="card-actions">' +
+                (item.tag ? '<span class="pill"><i class="fas fa-tags"></i> ' + escHtml(item.tag) + '</span>' : '<span></span>') +
+                '<a class="btn btn-dark-outline" href="' + escHtml(waLink('', waText)) +
+                '" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Ask / Order</a>' +
+                '</div>';
+
+              grid.appendChild(card);
+
+              // Attach lightbox to the newly inserted image
+              var img = card.querySelector('img.flyer');
+              if (img) attachLightbox(img);
+            });
+          })
+          .catch(function (err) {
+            console.error('[Ite Nnem] Menu fetch failed:', err);
+            showError('menuGrid', 'Please refresh the page or contact us on WhatsApp.');
+          });
+      }
+
+      // ── FETCH GALLERY ──────────────────────────────────────────
+      function loadGallery() {
+        fetch(API_BASE + '/api/gallery.php', { method: 'GET', mode: 'cors' })
+          .then(function (r) {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.json();
+          })
+          .then(function (json) {
+            var items = json.data || [];
+            var grid = document.getElementById('galleryGrid');
+            if (!items.length) {
+              grid.innerHTML = '<p class="smallnote" style="margin-top:1rem">Gallery coming soon!</p>';
+              return;
+            }
+            grid.innerHTML = '';
+            items.forEach(function (item) {
+              var waText = item.whatsapp_text || "Hello Ite Nnem! I want to order " + item.title + " please.";
+              var imgHtml = item.image_url
+                ? '<img class="flyer" src="' + escHtml(item.image_url) + '" alt="' +
+                escHtml(item.title) + '" loading="lazy" data-title="' + escHtml(item.title) + '"/>'
+                : '<div style="height:200px;background:#f5f0e8;display:flex;align-items:center;justify-content:center;color:#bbb;font-size:2.5rem"><i class="fas fa-image"></i></div>';
+
+              var card = document.createElement('article');
+              card.className = 'card';
+              card.innerHTML =
+                '<div class="card-head">' +
+                '<h3>' + escHtml(item.title) + '</h3>' +
+                (item.description ? '<p>' + escHtml(item.description) + '</p>' : '') +
+                '</div>' +
+                imgHtml +
+                '<div class="card-actions">' +
+                '<span></span>' +
+                '<a class="btn" href="' + escHtml(waLink('', waText)) +
+                '" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Order this</a>' +
+                '</div>';
+
+              grid.appendChild(card);
+
+              var img = card.querySelector('img.flyer');
+              if (img) attachLightbox(img);
+            });
+          })
+          .catch(function (err) {
+            console.error('[Ite Nnem] Gallery fetch failed:', err);
+            showError('galleryGrid', '');
+          });
+      }
+
+      // ── XSS-safe string escape ─────────────────────────────────
+      function escHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      // ── BOOT ───────────────────────────────────────────────────
+      loadSettings();
+      loadMenu();
+      loadGallery();
+
+    })();
+  </script>
+
+  <noscript>Please enable JavaScript for animations and image zoom.</noscript>
+</body>
+
+</html>
