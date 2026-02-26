@@ -41,12 +41,16 @@ export default async function handler(request) {
             headers: {
                 'content-type': 'application/json; charset=utf-8',
                 'access-control-allow-origin': '*',
+                'cache-control': 's-maxage=60, stale-while-revalidate=86400',
             },
         });
     } catch (err) {
         return new Response(JSON.stringify({ error: err.message }), {
             status: 500,
-            headers: { "content-type": "application/json" }
+            headers: {
+                "content-type": "application/json",
+                "cache-control": "no-store"
+            }
         });
     }
 }
