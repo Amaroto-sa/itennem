@@ -1,0 +1,16 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/menu.php",
+            "destination": "/api/proxy?endpoint=menu.php"
+        },
+        {
+            "source": "/api/gallery.php",
+            "destination": "/api/proxy?endpoint=gallery.php"
+        },
+        {
+            "source": "/api/settings.php",
+            "destination": "/api/proxy?endpoint=settings.php"
+        }
+    ]
+}
